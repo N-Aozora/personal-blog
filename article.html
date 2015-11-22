@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <title>blog</title>
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- 页面顶部区域开始 -->
+        <header class="text-center page-top">
+            <h1 class="title"><span class="glyphicon glyphicon-apple title-icon" aria-hidden="true"></span>Aozora's Blog</h1>
+            <nav class="top-nav">
+                <ul class="list-inline">
+                    <li><a href=""><span class="glyphicon glyphicon-home"></span>首页</a></li>
+                    <li><a href=""><span class="glyphicon glyphicon-list-alt"></span>归档</a></li>
+                    <li><a href=""><span class="glyphicon glyphicon-tasks"></span>分类</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- 页面顶部区域结束 -->
+        
+         <!-- 主要内容区域开始 -->
+        <main class="content">
+            <article>
+                <header class="article-title article-page-title">
+                    <h1>用 Git Subtree 在多个 Git 项目间双向同步子项目，附简明使用手册</h1>
+                    <p>发表于 2015-11-07 星期天 19:35&nbsp;&nbsp;|&nbsp;&nbsp;分类于<a href="" class="">笔记</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="">28条评论</a>&nbsp;&nbsp;|&nbsp;&nbsp;阅读次数55</p>
+                </header>
+                <div class="post-body">
+                    <figure>
+                        <img src="images/wKgDa1WztjSBdnc-AAdgYouSFN4819.jpg" class="img-responsive img-thumbnail" alt="">
+                    </figure>
+                    <blockquote>
+                        <p>当多个项目共用同一坨代码，而这坨代码跟着项目在快速更新的时候，可以试试Subtree哦。</p>
+                    </blockquote>
+                    <h3>背景</h3>
+                    <p>有赞微商城曾经是一个很大的前后端代码都包含在里面的 Git 项目，为了方便管理我们把前后端代码分离成2个Git 仓库，进而再作分项目拆分成多个Git 仓库。</p>
+                    <p>于是，就需要有好的方式同步各个项目共用的Css库、JS库、PHP库（他们都是以独立的 Git 仓库的形式存在）。而且由于开发节奏极快，我们需要这些库是可以在不同项目间双向同步的而不是单向同步。</p>
+                    <p>举个栗子：A项目需要在给某个子项目W里添加一个文件，最方便的方式自然是直接在A项目里改W子项目对应的目录里的代码，然后测试通过后，把这个更改提交到W子项目的 Git仓库里。如果这时候还要先单独更新W子项目的代码然后提交到 Git 服务器，再在A项目里把W子项目的代码更新过来，显然是很麻烦的，更麻烦的是如果发现代码有bug，还得再走一遍这个流程。</p>
+                    <h3>有什么方案</h3>
+                    <ul class="">
+                        <li>Git Submodule：这是Git官方以前的推荐方案</li>
+                        <li>Git Subtree：从 Git 1.5.2 开始，Git 新增并推荐使用这个功能来管理子项目</li>
+                        <li>npm：node package manager，实际上不仅仅是 node 的包管理工具</li>
+                        <li>composer：暂且认为他是php版npm、php版Maven吧</li>
+                    </ul>
+                    <p>虽然 npm、composer、maven 等更侧重于包的依赖管理，以上几个方案都是能够做到在不同项目中同步同一块代码的，但没法双向同步，更适用于子项目代码比较稳定的情形。</p>
+                    <p>Git Submodule 和 Git Subtree 都是官方支持的功能，不具有依赖管理的功能，但能满足我们的要求。Git Subtree相对来说会更好一些 。</p>
+                    <h3>Git Subtree 好在哪里</h3>
+                    <p>用一句话来描述 Git Subtree 的优势就是：</p>
+                    <blockquote>
+                        <p>经由 Git Subtree 来维护的子项目代码，对于父项目来说是透明的，所有的开发人员看到的就是一个普通的目录，原来怎么做现在依旧那么做，只需要维护这个 Subtree 的人在合适的时候去做同步代码的操作。</p>
+                    </blockquote>
+                    <p>它是怎么做到的呢？简单说下原理</p>
+                    <h3>Git Subtree 的原理</h3>
+                    <p>首先，你有两个伟大的项目——我们叫他P1项目、P2项目，还有一个牛逼的要被多个项目共用的项目——我们叫他S项目。我们通过简要讲解使用Subtree来同步代码的过程来解释Subtree的原理</p>
+                    <h4>1、初始化子项目Subtree</h4>
+                    <p>通过</p>
+                    <pre>cd P1项目的路径
+git subtree add --prefix=用来放S项目的相对路径 S项目git地址 xxx分支</pre>
+                    <p>这样的命令，把S项目（我们姑且叫他S项目）的代码下载到--prefix所指定的目录——我们姑且叫他S目录把，并在P1项目里自动产生一个commit（就是把S目录的内容提交到P1项目里）。</p>
+                    <h4>2、像往常一样更新代码</h4>
+                    <p>大家在P1项目里各种提交commit，其中有些commit会涉及到S目录的更改，正如前面提到的，这是没任何关系的，大家也不会感受到有任何不一样.</p>
+                    <h4>3、提交更改到子项目的Git服务器</h4>
+                    <p>当维护这个S项目 Subtree 的人希望把最近这段时间对S目录的更改提交到S项目的 Git 服务器上时，他执行一段类似于这样的命令：</p>
+                    <pre>cd P1项目的路径
+git subtree push --prefix=S项目的路径 S项目git地址 xxx分支</pre>
+                    <p>Git 会遍历所有的commit，从中找出针对S目录的更改，然后把这些更改记录提交到S项目的Git服务器上</p>
+                </div>
+                
+            </article>
+            <div class="article-tags">
+                <a href="">#Git</a>&nbsp;&nbsp;
+                <a href="">#GitHub</a>
+            </div>
+            <div class="post-nav justify">
+                <a href="" class="prev-article"><span class="glyphicon glyphicon-menu-left"></span>     为何使用Jekyll这样的静态编译博客？ </a>
+                <a href="" class="next-article pull-right">Flipboard - 60 FPS on the mobile web <span class="glyphicon glyphicon-menu-right"></span></a>
+            </div>
+        </main>
+        <!-- 主要内容区域结束 -->
+        
+        <footer class="page-bottom">
+            <small>
+                Copyrights © 2015 Aozora. All Rights Reserved. &nbsp; | &nbsp; Design originate from <a href="https://github.com/iissnan/hexo-theme-next" target="_blank">NexT.Pisces</a>
+            </small>
+        </footer>
+    </div>
+    
+    <!-- 页面侧边栏开始 -->
+    <aside class="sidebar">
+       <div class="author-info text-center">
+           <img src="images/useimg.jpg" class="center-block" width="135" height="135" alt="">
+           <strong>Aozora</strong>
+           <p>bala bala bala bala...</p>
+       </div>
+       <hr class="space1">
+       <section>
+           <nav class="side-nav text-center">
+                <ul class="list-inline">
+                    <li><a href=""><span>46</span>文章</a></li>
+                    <li class="li-space"></li>
+                    <li><a href=""><span>5</span>分类</a></li>
+                    <li class="li-space"></li>
+                    <li><a href=""><span>13</span>标签</a></li>
+                </ul>
+                <ul class="list-unstyled">
+                    <li><a href=""><span class="glyphicon glyphicon-home"></span>首页</a></li>
+                    <li><a href=""><span class="glyphicon glyphicon-user"></span>关于</a></li>
+                    <li><a href=""><span class="glyphicon glyphicon-search"></span>搜索</a></li>
+                </ul>
+            </nav>
+            <hr class="space2">
+            <ul class="list-inline links">
+                <li><a href=""><i class="glyphicon" style="width:12px;height:12px;background:url(images/new2_03_03.png);background-size:12px 12px;"></i>GitHub</a></li>
+                <li><a href=""><i class="glyphicon glyphicon-globe"></i>知乎</a></li>
+                <li><a href=""><i class="glyphicon glyphicon-globe"></i>豆瓣</a></li>
+            </ul>
+       </section>
+    </aside>
+    <!-- 页面侧边栏结束 -->
+    
+    <!-- 侧边栏展开按钮和回到顶部按钮 -->
+    <div class="btns">
+        <button type="button" id="sidebar-toggle" class="">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar icon-bar-top"></span>
+            <span class="icon-bar icon-bar-center"></span>
+            <span class="icon-bar icon-bar-bottom"></span>
+        </button>
+        <button type="button" id="backTop">
+            <span class="caret"></span>
+        </button>
+    </div>
+    
+    <script src="js/jquery-1.11.3.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
