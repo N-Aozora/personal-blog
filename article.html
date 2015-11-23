@@ -83,10 +83,107 @@ git subtree push --prefix=S项目的路径 S项目git地址 xxx分支</pre>
             </div>
             <div class="post-nav justify">
                 <a href="" class="prev-article"><span class="glyphicon glyphicon-menu-left"></span>     为何使用Jekyll这样的静态编译博客？ </a>
-                <a href="" class="next-article pull-right">Flipboard - 60 FPS on the mobile web <span class="glyphicon glyphicon-menu-right"></span></a>
+                <a href="" class="next-article pull-right">Flipboard - 50 FPS on the mobile web <span class="glyphicon glyphicon-menu-right"></span></a>
             </div>
         </main>
         <!-- 主要内容区域结束 -->
+        
+        <!-- 评论区域 -->
+        <section class="center-block comment-box">
+            <form action="" class="form-horizontal comment-form">
+                <div class="form-group">
+                    <label for="inputUserName" class="col-sm-1 control-label">称呼</label>
+                    <div class="col-sm-11">
+                      <input type="text" class="form-control" id="inputUserName" placeholder="userName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-sm-1 control-label">邮箱</label>
+                    <div class="col-sm-11">
+                      <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="user-url" class="col-sm-1 control-label">网站</label>
+                    <div class="col-sm-11">
+                      <input type="url" class="form-control" id="user-url" placeholder="website ">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="comment-text" class="col-sm-1 control-label">评论</label>
+                    <div class="col-sm-11">
+                        <textarea name="comment-text" id="comment-text" cols="30" rows="5" class="form-control" placeholder="Say something..." required></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                   <div class="col-sm-offset-1 col-sm-11">
+                       <button class="btn btn-default" type="submit">发表评论</button>
+                   </div> 
+                </div>
+            </form>
+            <span class="comment-title">5条评论</span>
+            <div class="media comment">
+              <div class="media-left">
+                <a href="#">
+                  <img class="media-object comment-user-img" src="images/useimg.jpg" width="50" height="50" alt="...">
+                </a>
+              </div>
+              <div class="media-body">
+                <a href="" class="comment-user-name"><span class="media-heading ">Aozora</span></a>
+                <p class="comment-content">评论相关...评论相关评论相关...评论相关</p>
+                <div class="comment-footer"><time datetime="2015-11-23">11月13日 15:08</time><a href="" class="reply"><span class="glyphicon glyphicon-share-alt"></span> 回复</a></div>
+                <div class="media comment-child">
+                  <div class="media-left">
+                    <a href="#">
+                      <img class="media-object comment-user-img" src="images/useimg.jpg" width="50" height="50" alt="...">
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <a href="" class="comment-user-name"><span class="media-heading ">Aozora</span></a>
+                    <p class="comment-content">评论相关...评论相关评论相关...评论相关</p>
+                    <div class="comment-footer"><time datetime="2015-11-23">11月13日 15:08</time><a href="" class="reply"><span class="glyphicon glyphicon-share-alt"></span> 回复</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="media comment">
+              <div class="media-left">
+                <a href="#">
+                  <img class="media-object comment-user-img" src="images/useimg.jpg" width="50" height="50" alt="...">
+                </a>
+              </div>
+              <div class="media-body">
+                <a href="" class="comment-user-name"><span class="media-heading ">Aozora</span></a>
+                <p class="comment-content">评论相关...评论相关评论相关...评论相关</p>
+                <div class="comment-footer"><time datetime="2015-11-23">11月13日 15:08</time><a href="" class="reply"><span class="glyphicon glyphicon-share-alt"></span> 回复</a></div>
+                <div class="media comment-child">
+                  <div class="media-left">
+                    <a href="#">
+                      <img class="media-object comment-user-img" src="images/useimg.jpg" width="50" height="50" alt="...">
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <a href="" class="comment-user-name"><span class="media-heading ">Aozora</span></a>
+                    <p class="comment-content">评论相关...评论相关评论相关...评论相关</p>
+                    <div class="comment-footer"><time datetime="2015-11-23">11月13日 15:08</time><a href="" class="reply"><span class="glyphicon glyphicon-share-alt"></span> 回复</a></div>
+                    <div class="media comment-child">
+                      <div class="media-left">
+                        <a href="#">
+                          <img class="media-object comment-user-img" src="images/useimg.jpg" width="50" height="50" alt="...">
+                        </a>
+                      </div>
+                      <div class="media-body">
+                        <a href="" class="comment-user-name"><span class="media-heading ">Aozora</span></a>
+                        <p class="comment-content">评论相关...评论相关评论相关...评论相关</p>
+                        <div class="comment-footer"><time datetime="2015-11-23">11月13日 15:08</time><a href="" class="reply"><span class="glyphicon glyphicon-share-alt"></span> 回复</a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
+        <!-- 评论区域结束 -->
         
         <footer class="page-bottom">
             <small>

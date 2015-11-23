@@ -189,6 +189,75 @@ article ul {
 }
 
 
+/*评论区域*/
+.comment-box {
+    max-width: 700px;
+    margin-top: 60px;
+    border-bottom: 1px solid #ddd;
+    font-family: "Microsoft JhengHei","Hiragino Sans GB","Microsoft YaHei","sans-serif";
+}
+.comment-form {
+    margin-bottom: 40px;
+}
+.comment-title {
+    display: inline-block;
+    padding: 3px 8px;    
+    margin-bottom: 10px;
+    background-color: #eee;
+} 
+.media-body {
+    overflow: auto;
+}
+.comment,.comment-child {
+    margin-top: 0;
+    padding: 10px 0 0;
+    border-top: 1px solid #ddd;
+}
+.comment-child {
+    margin-left: -35px;
+}
+.comment-child .comment-child {
+    margin-left: -23px;
+} 
+.comment-child .comment-user-img {
+    width: 30px;
+    height: 30px;
+}
+.comment-user-img {
+    border-radius: 5px;
+}
+.comment-user-name {
+    font-weight: bold;
+    color: #555;
+}
+.comment-user-name:hover {
+    text-decoration: none;
+    color: #337AB7;
+}
+.comment-content {
+    margin-top: 2px;    
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #555;
+}
+.comment-footer {
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #999;
+}
+.reply {
+    margin-left: 15px;
+    color: #999;
+}
+.reply:hover {
+    text-decoration: none;
+    color: #337AB7;
+}
+.reply span {
+    transform: rotateY(180deg);
+}
+
+
 
 /*右侧导航*/
 .sidebar {
@@ -305,7 +374,7 @@ hr.space2 {
 /*页面底部*/
 .page-bottom {
     max-width: 700px;
-    margin: 50px auto 10px;
+    margin: 60px auto 10px;
     color: #888;
     font-family: "Microsoft YaHei";
 }
