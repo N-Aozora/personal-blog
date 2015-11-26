@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/index.css">
-    <title>blog</title>
+    <title>文章标题 | Aozora's blog</title>
     <!--[if lt IE 9]>
       <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
@@ -16,12 +16,12 @@
     <div class="container-fluid">
         <!-- 页面顶部区域开始 -->
         <header class="text-center page-top">
-            <h1 class="title"><span class="glyphicon glyphicon-apple title-icon" aria-hidden="true"></span>Aozora's Blog</h1>
+            <h1 class="title"><a href="index.html"><span class="glyphicon glyphicon-apple title-icon" aria-hidden="true"></span>Aozora's Blog</a></h1>
             <nav class="top-nav">
                 <ul class="list-inline">
-                    <li><a href=""><span class="glyphicon glyphicon-home"></span>首页</a></li>
-                    <li><a href=""><span class="glyphicon glyphicon-list-alt"></span>归档</a></li>
-                    <li><a href=""><span class="glyphicon glyphicon-tasks"></span>分类</a></li>
+                    <li><a href="index.html"><span class="glyphicon glyphicon-home"></span>首页</a></li>
+                    <li><a href="archives.html"><span class="glyphicon glyphicon-list-alt"></span>归档</a></li>
+                    <li><a href="categories.html"><span class="glyphicon glyphicon-tasks"></span>分类</a></li>
                 </ul>
             </nav>
         </header>
@@ -180,6 +180,18 @@ git subtree push --prefix=S项目的路径 S项目git地址 xxx分支</pre>
                     </div>
                   </div>
                 </div>
+                <div class="media comment-child">
+                  <div class="media-left">
+                    <a href="#">
+                      <img class="media-object comment-user-img" src="images/useimg.jpg" width="50" height="50" alt="...">
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <a href="" class="comment-user-name"><span class="media-heading ">Aozora</span></a>
+                    <p class="comment-content">评论相关...评论相关评论相关...评论相关</p>
+                    <div class="comment-footer"><time datetime="2015-11-23">11月13日 15:08</time><a href="" class="reply"><span class="glyphicon glyphicon-share-alt"></span> 回复</a></div>
+                  </div>
+                </div>
               </div>
             </div>
         </section>
@@ -203,14 +215,14 @@ git subtree push --prefix=S项目的路径 S项目git地址 xxx分支</pre>
        <section>
            <nav class="side-nav text-center">
                 <ul class="list-inline">
-                    <li><a href=""><span>46</span>文章</a></li>
+                    <li><a href="archives.html"><span>46</span>文章</a></li>
                     <li class="li-space"></li>
-                    <li><a href=""><span>5</span>分类</a></li>
+                    <li><a href="categories.html"><span>5</span>分类</a></li>
                     <li class="li-space"></li>
-                    <li><a href=""><span>13</span>标签</a></li>
+                    <li><a href="tags.html"><span>13</span>标签</a></li>
                 </ul>
                 <ul class="list-unstyled">
-                    <li><a href=""><span class="glyphicon glyphicon-home"></span>首页</a></li>
+                    <li><a href="index.html"><span class="glyphicon glyphicon-home"></span>首页</a></li>
                     <li><a href=""><span class="glyphicon glyphicon-user"></span>关于</a></li>
                     <li><a href=""><span class="glyphicon glyphicon-search"></span>搜索</a></li>
                 </ul>
