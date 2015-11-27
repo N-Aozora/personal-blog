@@ -79,7 +79,7 @@
                 <ul class="list-unstyled">
                     <li><a href="index.html"><span class="glyphicon glyphicon-home"></span>首页</a></li>
                     <li><a href=""><span class="glyphicon glyphicon-user"></span>关于</a></li>
-                    <li><a href=""><span class="glyphicon glyphicon-search"></span>搜索</a></li>
+                    <li><a href="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-search"></span>搜索</a></li>
                 </ul>
             </nav>
             <hr class="space2">
@@ -104,6 +104,30 @@
             <span class="caret"></span>
         </button>
     </div>
+    
+    <!-- 搜索模态框开始 -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header modal-search-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="modal-title modal-search-title">
+               <form action="">
+                   <label for="input-search"><span class="glyphicon glyphicon-search"></span></label>
+                   <input type="search" id="input-search" placeholder="在此处输入搜索内容" autofocus>
+               </form>
+            </div>
+          </div>
+          <div class="modal-body modal-search-body">
+            <p>One fine body&hellip;</p>
+          </div>
+          <div class="modal-footer modal-search-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 搜索模态框结束 -->
     
     <script src="js/jquery-1.11.3.js"></script>
     <script src="js/bootstrap.min.js"></script>

@@ -576,15 +576,49 @@ hr.space2 {
     overflow: auto;
     padding-right: 0 !important;
 }
+.modal-content {
+    overflow: hidden;
+}
 .modal-search-header {
- 
+    padding: 0px;
+    padding-bottom: 1px;
+    background-color: #F6F6F7;
 } 
+.modal-search-header-focus{
+    padding-bottom: 0px;
+    border-bottom: 2px solid #337AB7;
+}
+.modal-search-header .close {
+    position: absolute;
+    right: 0;
+    padding: 5px 7px;
+    margin-right: 10px;
+    margin-top: 8px;
+}
+.modal-search-title {
+    font-size: 0;
+}
 .modal-search-title .glyphicon-search {
+    position: absolute;
+    margin-top: 13px;
+    margin-left: 15px;
     vertical-align: bottom;
     font-size: 24px;
 }
 .modal-search-title input[type="search"] {
+    padding: 15px 15px 12px 40px;
+    width: 100%;
+    outline: none;
     border: none;
     text-indent: .5em;
+    font-family: "Helvetica Neue",Helvetica,Arial,"microsoft YaHei",sans-serif;
     font-size: 16px;
+    background-color: #F6F6F7;
+}
+.modal-search-body {
+    min-height: 400px;
+    background: url(../images/modal_search_bg.png) no-repeat center center;
+}
+.modal-search-footer {
+    background-color: #F6F6F7;
 }

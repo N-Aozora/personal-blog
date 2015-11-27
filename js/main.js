@@ -47,5 +47,12 @@
     $("#backTop").on("click",function(){
         $("body,html").animate({scrollTop:0},200);
     })
+    
+    //模态框搜索栏焦点事件
+    $("#input-search").on("focus",function(){
+        $(".modal-search-header").addClass("modal-search-header-focus");
+    }).on("blur",function(){
+        $(".modal-search-header").removeClass("modal-search-header-focus");
+    })
 }()
 
